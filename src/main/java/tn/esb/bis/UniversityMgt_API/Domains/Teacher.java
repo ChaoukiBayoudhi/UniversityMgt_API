@@ -3,12 +3,9 @@ package tn.esb.bis.UniversityMgt_API.Domains;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import tn.esb.bis.UniversityMgt_API.Enumerations.TeacherGrade;
-import tn.esb.bis.UniversityMgt_API.Enumerations.studyLevel;
 
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data //remplace @Getter, @Setter @RequiredArgsConstructor, @ToString et @EqualsAndHashCode
