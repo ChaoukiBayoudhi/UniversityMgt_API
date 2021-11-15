@@ -21,6 +21,10 @@ import java.time.LocalDate;
 //L'ORM dans le cas de spring-boot est Hibernate
 @Table(name="student_tab") //cette annotation permet de specifier quelques caractéristiques
 //sur la table à créer par l'ORM
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+//redefinit les méthodes equals() et hashCode de la classe Object
+//dans ce cas deux étudiants sont identiques s'il y a egalité entre
+//tous les champs annotés avec @EqualsAndHashCode.Include
 public class Student {
     @Id //primary key
     @GeneratedValue //La clé primaire sera automatiquement générée (par default identity)
@@ -28,11 +32,14 @@ public class Student {
     private Long id;
     @NonNull //firstName est obligatoire
     @Column(name ="first_name",length=50)
+    @EqualsAndHashCode.Include
     private String firstName;
     @NonNull
     @Column(name ="last_name",length=50)
+    @EqualsAndHashCode.Include
     private String lastName;
     @JsonFormat(pattern="yyyy-mm-dd")
+    @EqualsAndHashCode.Include
     private LocalDate birthDate;
     private studyLevel studentLevel;
     @NonNull

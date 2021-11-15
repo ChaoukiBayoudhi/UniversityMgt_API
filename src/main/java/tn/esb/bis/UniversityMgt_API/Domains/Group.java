@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -22,8 +24,14 @@ public class Group {
         this.capacity = capacity;
         this.description = description;
     }
-//    @ManyToMany
-//    @JoinTable(name="GroupModule",
-//            //les deux clés étrangères formant la clé primaire composite
-//    )
+    @ManyToMany
+    //La création de la table association avec @JoinTable est valable uniquement
+    //lorsque la table association contient uniquement les deux clés étrangères
+    //formant une clé primaire composite.
+    @JoinTable(name="Group_Modules",
+            joinColumns=@JoinColumn(name ="id_group",referencedColumnName = "id"),
+            inverseJoinColumns=@JoinColumn(name ="id_module",referencedColumnName="id")
+            //les deux clés étrangères formant la clé primaire composite
+    )
+    private Set<Module> modules = new HashSet<>();
 }

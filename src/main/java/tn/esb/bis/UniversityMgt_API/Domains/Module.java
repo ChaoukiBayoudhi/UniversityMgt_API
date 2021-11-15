@@ -6,10 +6,10 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import tn.esb.bis.UniversityMgt_API.Enumerations.studyLevel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data //remplace @Getter, @Setter @RequiredArgsConstructor, @ToString et @EqualsAndHashCode
 @NoArgsConstructor
 @RequiredArgsConstructor //genère un con structeur avec uniquement les attributs
@@ -25,4 +25,6 @@ public class Module {
     private int nbHours;
     @NonNull
     private studyLevel Level;
+    @ManyToMany
+    Set<Group> groupes=new HashSet<>();
 }
