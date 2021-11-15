@@ -8,6 +8,7 @@ import lombok.NonNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Data
@@ -27,6 +28,8 @@ public class Address {
     @NonNull
     @EqualsAndHashCode.Include
     private  int postalCode;
+    @OneToOne
+    private Student student;
 
 
 }

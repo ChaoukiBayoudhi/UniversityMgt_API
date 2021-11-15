@@ -47,7 +47,12 @@ public class Student {
     private String email;
     @Lob
     private byte[] photo;
-
+    @ManyToOne
+    @JoinColumn(name="id_group",referencedColumnName = "id")
+    private Group studentGroup;
+    @OneToOne(mappedBy="student",cascade=CascadeType.ALL)
+    @JoinColumn(name="id_address",referencedColumnName="id")
+    private Address studentAddress;
     public Student(@NonNull String firstName, @NonNull String lastName, LocalDate birthDate, studyLevel studentLevel, @NonNull String email, byte[] photo) {
         this.firstName = firstName;
         this.lastName = lastName;

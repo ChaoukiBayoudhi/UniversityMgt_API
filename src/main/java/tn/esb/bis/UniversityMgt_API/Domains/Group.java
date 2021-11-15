@@ -34,4 +34,6 @@ public class Group {
             //les deux clés étrangères formant la clé primaire composite
     )
     private Set<Module> modules = new HashSet<>();
+    @OneToMany(mappedBy="studentGroup",cascade=CascadeType.ALL)
+    private Set<Student> students = new HashSet<>();
 }
