@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import tn.esb.bis.UniversityMgt_API.Domains.Student;
 
 @Repository
-public interface studentRepository extends JpaRepository<Student,Long> {
+public interface StudentRepository extends JpaRepository<Student,Long> {
 }

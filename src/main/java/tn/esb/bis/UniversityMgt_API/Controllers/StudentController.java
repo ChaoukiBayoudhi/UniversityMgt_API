@@ -2,10 +2,10 @@ package tn.esb.bis.UniversityMgt_API.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-import tn.esb.bis.UniversityMgt_API.Services.GroupService;
+import tn.esb.bis.UniversityMgt_API.Services.StudentService;
 
 @RestController
-public class GroupController {
+public class StudentController {
     @Autowired
-    private GroupService groupService;
+    private StudentService studentServ;
 }
