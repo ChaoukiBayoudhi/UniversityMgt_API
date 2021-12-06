@@ -38,8 +38,9 @@ public class Student {
     @Column(name ="last_name",length=50)
     @EqualsAndHashCode.Include
     private String lastName;
-    @JsonFormat(pattern="yyyy-mm-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
     @EqualsAndHashCode.Include
+    @NonNull
     private LocalDate birthDate;
     private studyLevel studentLevel;
     @NonNull
@@ -53,12 +54,16 @@ public class Student {
     @OneToOne(mappedBy="student",cascade=CascadeType.ALL)
     @JoinColumn(name="id_address",referencedColumnName="id")
     private Address studentAddress;
-    public Student(@NonNull String firstName, @NonNull String lastName, LocalDate birthDate, studyLevel studentLevel, @NonNull String email, byte[] photo) {
+
+    public Student(Long id, @NonNull String firstName, @NonNull String lastName, LocalDate birthDate, studyLevel studentLevel, @NonNull String email, byte[] photo, Group studentGroup, Address studentAddress) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.studentLevel = studentLevel;
         this.email = email;
         this.photo = photo;
+        this.studentGroup = studentGroup;
+        this.studentAddress = studentAddress;
     }
 }

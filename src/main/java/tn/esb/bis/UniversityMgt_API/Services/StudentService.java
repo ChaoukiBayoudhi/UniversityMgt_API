@@ -8,6 +8,7 @@ import tn.esb.bis.UniversityMgt_API.Domains.Student;
 import tn.esb.bis.UniversityMgt_API.Repositories.StudentRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -19,5 +20,23 @@ public class StudentService {
         if(res.isEmpty())
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(res,HttpStatus.OK);
+    }
+    public ResponseEntity addStudent(Student st)
+    {
+        if(studentRepos.findAll().contains(st))
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                    .body("This student already exists");
+        Student s=studentRepos.save(st);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(st);
+    }
+    public ResponseEntity<?> getStudentById(Long id)
+    {
+        Optional<Student> st=studentRepos.findById(id);
+        if(st.isEmpty())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                .body("This student does not exist");
+        return ResponseEntity.status(HttpStatus.OK)
+                                .body(st.get());
     }
 }

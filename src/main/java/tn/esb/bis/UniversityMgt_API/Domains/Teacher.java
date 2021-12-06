@@ -5,11 +5,13 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import tn.esb.bis.UniversityMgt_API.Enumerations.TeacherGrade;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data //remplace @Getter, @Setter @RequiredArgsConstructor, @ToString et @EqualsAndHashCode
 @NoArgsConstructor
+@Entity
 public class Teacher {
     @Id
     @GeneratedValue
